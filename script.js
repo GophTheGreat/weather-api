@@ -63,25 +63,28 @@ async function display(){
   forecast = processForecastJSON(blah);
   let location = forecast.name;
   
-  let locationDiv = document.querySelector("#day1").querySelector(".location");
-  locationDiv.innerHTML = location;
-  console.log(locationDiv);
+  for(let i = 1; i < 4; i++){
+    let index = i - 1;
+    let locationDiv = document.querySelector(`#day${i}`).querySelector(".location");
+    locationDiv.innerHTML = location;
+    console.log(locationDiv);
 
-  let maxtemp_c = forecast.forecastday[0].day.maxtemp_c;
-  let maxtemp_cDiv = document.querySelector("#day1").querySelector(".maxtemp_c");
-  maxtemp_cDiv.innerHTML = maxtemp_c;
+    let maxtemp_c = forecast.forecastday[index].day.maxtemp_c;
+    let maxtemp_cDiv = document.querySelector(`#day${i}`).querySelector(".maxtemp_c");
+    maxtemp_cDiv.innerHTML = maxtemp_c;
 
-  let mintemp_c = forecast.forecastday[0].day.mintemp_c;
-  let mintemp_cDiv = document.querySelector("#day1").querySelector(".mintemp_c");
-  mintemp_cDiv.innerHTML = mintemp_c;
+    let mintemp_c = forecast.forecastday[index].day.mintemp_c;
+    let mintemp_cDiv = document.querySelector(`#day${i}`).querySelector(".mintemp_c");
+    mintemp_cDiv.innerHTML = mintemp_c;
 
-  let maxtemp_f = forecast.forecastday[0].day.maxtemp_f;
-  let maxtemp_fDiv = document.querySelector("#day1").querySelector(".maxtemp_f");
-  maxtemp_fDiv.innerHTML = maxtemp_f;
+    let maxtemp_f = forecast.forecastday[index].day.maxtemp_f;
+    let maxtemp_fDiv = document.querySelector(`#day${i}`).querySelector(".maxtemp_f");
+    maxtemp_fDiv.innerHTML = maxtemp_f;
 
-  let mintemp_f = forecast.forecastday[0].day.mintemp_f;
-  let mintemp_fDiv = document.querySelector("#day1").querySelector(".mintemp_f");
-  mintemp_fDiv.innerHTML = mintemp_f;
+    let mintemp_f = forecast.forecastday[index].day.mintemp_f;
+    let mintemp_fDiv = document.querySelector(`#day${i}`).querySelector(".mintemp_f");
+    mintemp_fDiv.innerHTML = mintemp_f;
+  }
 
 }
 

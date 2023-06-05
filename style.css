@@ -15,17 +15,32 @@ html, body {
 }
 
 #weatherBox {
-  width: 500px;
+  width: 700px;
   height: 300px;
   background-color: #f0f0f0;
   display: flex;
-  column-gap: 10px;
+  border-radius: 12px;
+  border: 3px solid lightcoral;
+  padding: 4px;
+  justify-content: space-between;
 }
 
 .day{
   background-color: lightpink;
-  width: 33%;
-  height: 100%;
   display: flex;
-  flex-grow: 1;
+  width: 33%;
+  padding: 4px;
+  margin-left: 3px;
+  margin-right: 3px;
+  border-radius: 12px;
+}
+
+.day:first-child, .day:last-child{
+  margin-left: 0;
+  margin-right: 0;
+}
+
+day:last-child{
+  margin-left: 0;
+  margin-right: 0;
 }
