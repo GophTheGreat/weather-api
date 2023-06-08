@@ -13,7 +13,13 @@ async function getWeather(){
 
 async function getWeatherForecast(){
   //const locationCity = prompt("Give me a capital city");
-  locationCity = "London"
+  let searchbar = document.querySelector('#searchbar');
+  console.log(searchbar);
+  searchbar.value = "Brussels"
+  locationCity = searchbar.value;
+  console.log("here" + locationCity)
+    
+
   const response = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=522b8e29714a4227bbe50305231104&q=${locationCity}&aqi=no&days=3`);
   const jsonData = await response.json();
 
