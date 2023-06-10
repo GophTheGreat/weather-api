@@ -15,7 +15,7 @@ async function getWeatherForecast(){
   //const locationCity = prompt("Give me a capital city");
   let searchbar = document.querySelector('#searchbar');
   console.log(searchbar);
-  searchbar.value = "Brussels"
+  searchbar.value = "Honolulu"
   locationCity = searchbar.value;
   console.log("here" + locationCity)
     
@@ -67,13 +67,31 @@ async function main(){
 async function display(){
   blah = await getWeatherForecast();
   forecast = processForecastJSON(blah);
+  console.log("inDisplay")
+  console.log(forecast);
   let location = forecast.name;
   
   for(let i = 1; i < 4; i++){
     let index = i - 1;
+
     let locationDiv = document.querySelector(`#day${i}`).querySelector(".location");
     locationDiv.innerHTML = location;
     console.log(locationDiv);
+
+    let date = forecast.forecastday[index].date;
+    let dateDiv = document.querySelector(`#day${i}`).querySelector(".date");
+    dateDiv.innerHTML = date;
+    console.log(dateDiv);
+
+    let condition = forecast.forecastday[index].day.condition.text;
+    let conditionDiv = document.querySelector(`#day${i}`).querySelector(".condition");
+    conditionDiv.innerHTML = condition;
+
+    let conditionIcon = forecast.forecastday[index].day.condition.icon;
+    let conditionIconDiv = conditionDiv.appendChild(document.createElement("img"));
+    console.log(conditionIcon);
+    console.log(conditionIconDiv);
+    conditionIconDiv.src = conditionIcon;
 
     let maxtemp_c = forecast.forecastday[index].day.maxtemp_c;
     let maxtemp_cDiv = document.querySelector(`#day${i}`).querySelector(".maxtemp_c");
