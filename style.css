@@ -5,7 +5,7 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: purple;
+  background-color: rgb(191, 225, 226);
 }
 
 #mainContainer {
@@ -30,13 +30,13 @@ html, body {
   grid-template-rows: 65% auto;
   row-gap: 5px;
   border-radius: 12px;
-  border: 3px solid lightcoral;
+  border: 3px solid rgb(160, 225, 240);
   padding: 4px;
   justify-content: space-between;
 }
 
 .day{
-  background-color: lightpink;
+  background-color:  rgb(160, 225, 240);
   display: flex;
   padding: 4px;
   margin-left: 3px;

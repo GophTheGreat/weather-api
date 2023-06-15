@@ -80,9 +80,17 @@ async function display(){
 
     let date = forecast.forecastday[index].date;
     let dateDiv = document.querySelector(`#day${i}`).querySelector(".date");
-    dateDiv.innerHTML = date;
+    let dateFormatted = formatDate(date);
+
+    let dayDiv = document.querySelector(`#day${i}`).querySelector(".date").querySelector(".day");
+    dayDiv.innerHTML = dateFormatted.day;
+    let monthDiv = document.querySelector(`#day${i}`).querySelector(".date").querySelector(".month");
+    monthDiv.innerHTML = dateFormatted.month;
+    let yearDiv = document.querySelector(`#day${i}`).querySelector(".date").querySelector(".year");
+    yearDiv.innerHTML = dateFormatted.year;
     console.log(dateDiv);
 
+    
     let condition = forecast.forecastday[index].day.condition.text;
     let conditionDiv = document.querySelector(`#day${i}`).querySelector(".condition");
     conditionDiv.innerHTML = condition;
@@ -110,6 +118,16 @@ async function display(){
     mintemp_fDiv.innerHTML = mintemp_f;
   }
 
+}
+
+function formatDate(date){
+  const dateFormatted = {year: null, month: null, day: null};
+  dateFormatted.year = new Date(date).toLocaleString('default', {year: "numeric"})
+  dateFormatted.month = new Date(date).toLocaleString('default', {month: "short"})
+  dateFormatted.day = new Date(date).toLocaleString('default', {day: "2-digit"})
+
+  console.log(dateFormatted);
+  return dateFormatted;
 }
 
 main();
