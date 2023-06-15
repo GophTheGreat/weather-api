@@ -30,14 +30,16 @@ html, body {
   grid-template-rows: 65% auto;
   row-gap: 5px;
   border-radius: 12px;
-  border: 3px solid rgb(160, 225, 240);
+  border: 3px solid rgb(5, 195, 243);
   padding: 4px;
   justify-content: space-between;
 }
 
 .day{
   background-color:  rgb(160, 225, 240);
-  display: flex;
+  display: grid;
+  grid-template-rows: 45px 1fr;
+  grid-template-columns: 50% 50%;
   padding: 4px;
   margin-left: 3px;
   margin-right: 3px;
@@ -46,6 +48,51 @@ html, body {
 
 #day1{
   grid-column: 1 / span 2;
+}
+
+#day1 .location{
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 35px;
+  justify-content: flex-start;
+  padding-left: 10px;
+}
+
+#day1 .date{
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 35px;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  justify-content: flex-end;
+  padding-right: 10px;
+}
+
+#day1 .location{
+  height: 40px;
+  display: grid;
+  align-items: center;
+}
+
+#day1 .condition{
+  display: grid;
+  grid-template-rows: 100px 35px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  border: 3px solid rgb(5, 195, 243);
+}
+
+#day1 .conditionIconDiv{
+  height: 120px;
+  width: auto;
+  justify-self: center;
+}
+
+#day1 .conditionWords{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 22px;
+  padding-top: 10px;
+  justify-self: center;
 }
 
 #day2{

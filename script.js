@@ -83,10 +83,9 @@ async function display(forecast){
     // console.log(locationDiv);
 
     let date = forecast.forecastday[index].date;
-    let dateDiv = document.querySelector(`#day${i}`).querySelector(".date");
     let dateFormatted = formatDate(date);
 
-    let dayDiv = document.querySelector(`#day${i}`).querySelector(".date").querySelector(".day");
+    let dayDiv = document.querySelector(`#day${i}`).querySelector(".date").querySelector(".dayNum");
     dayDiv.innerHTML = dateFormatted.day;
     let monthDiv = document.querySelector(`#day${i}`).querySelector(".date").querySelector(".month");
     monthDiv.innerHTML = dateFormatted.month;
@@ -97,13 +96,19 @@ async function display(forecast){
     
     let condition = forecast.forecastday[index].day.condition.text;
     let conditionDiv = document.querySelector(`#day${i}`).querySelector(".condition");
-    conditionDiv.innerHTML = condition;
-
     let conditionIcon = forecast.forecastday[index].day.condition.icon;
+    
+    console.log(conditionDiv.hasChildNodes());
+    deleteChildren(conditionDiv);
     let conditionIconDiv = conditionDiv.appendChild(document.createElement("img"));
-    // console.log(conditionIcon);
-    // console.log(conditionIconDiv);
+    
+
+    console.log(conditionIconDiv);
     conditionIconDiv.src = conditionIcon;
+    conditionIconDiv.className = "conditionIconDiv";
+    let conditionWords = conditionDiv.appendChild(document.createElement("p"));
+    conditionWords.innerHTML = condition;
+    conditionWords.className = "conditionWords";
 
     let maxtemp_c = forecast.forecastday[index].day.maxtemp_c;
     let maxtemp_cDiv = document.querySelector(`#day${i}`).querySelector(".maxtemp_c");
@@ -127,11 +132,17 @@ async function display(forecast){
 function formatDate(date){
   const dateFormatted = {year: null, month: null, day: null};
   dateFormatted.year = new Date(date).toLocaleString('default', {year: "numeric"})
-  dateFormatted.month = new Date(date).toLocaleString('default', {month: "short"})
-  dateFormatted.day = new Date(date).toLocaleString('default', {day: "2-digit"})
+  dateFormatted.month = new Date(date).toLocaleString('default', {month: "long"})
+  dateFormatted.day = new Date(date).toLocaleString('default', {day: "numeric"})  + ",";
 
   console.log(dateFormatted);
   return dateFormatted;
+}
+
+function deleteChildren(element){
+  while(element.firstChild){
+    element.removeChild(element.firstChild)
+  }
 }
 
 main();
