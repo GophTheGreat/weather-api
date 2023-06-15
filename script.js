@@ -1,25 +1,12 @@
 //API key 522b8e29714a4227bbe50305231104
 
-async function getWeather(){
-  //const locationCity = prompt("Give me a capital city");
-  locationCity = "London"
-  const response = await fetch(`http://api.weatherapi.com/v1/current.json?key=522b8e29714a4227bbe50305231104&q=${locationCity}&aqi=no`);
-  const jsonData = await response.json();
-  // console.log(jsonData);
-  // console.log(jsonData.location);
-  // console.log(jsonData.location.region);
-  return jsonData;
-}
-
-async function getWeatherForecast(){
+async function getWeatherForecast(place){
   //const locationCity = prompt("Give me a capital city");
   let searchbar = document.querySelector('#searchbar');
-  console.log(searchbar);
-  searchbar.value = "Honolulu"
-  locationCity = searchbar.value;
-  console.log("here" + locationCity)
-    
 
+  let locationCity = place;
+  console.log("------------");
+    
   const response = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=522b8e29714a4227bbe50305231104&q=${locationCity}&aqi=no&days=3`);
   const jsonData = await response.json();
 
@@ -28,10 +15,12 @@ async function getWeatherForecast(){
   return jsonData;
 }
 
-function processJSON(jsonData){
-  console.log(jsonData);
-  console.log(jsonData.location);
-  console.log(jsonData.location.region);
+
+async function getWeatherForecastInitial(){
+  let defaultLocation = "Honolulu";
+  console.log(defaultLocation)
+  json = await getWeatherForecast(defaultLocation);
+  return json;
 }
 
 function processForecastJSON(jsonData){
@@ -53,21 +42,19 @@ function processForecastJSON(jsonData){
   // console.log(jsonData.forecast.forecastday[0].day.maxtemp_c)
   // console.log(jsonData.forecast.forecastday[1])
   // console.log(jsonData.forecast.forecastday[2])
+  console.log("Here is the processsed jasdon");
   console.log(processed);
   return processed;
 }
 
 async function main(){
-  // let blah = await getWeather();
-  // processJSON(blah);
-  blah = await getWeatherForecast();
-  processForecastJSON(blah);
+  let initialWeather = await getWeatherForecastInitial();
+  let initialWeatherProcessed = processForecastJSON(initialWeather);
+  display(initialWeatherProcessed);
 }
 
-async function display(){
-  blah = await getWeatherForecast();
-  forecast = processForecastJSON(blah);
-  console.log("inDisplay")
+async function display(forecast){
+  console.log("inDisplay");
   console.log(forecast);
   let location = forecast.name;
   
@@ -76,7 +63,7 @@ async function display(){
 
     let locationDiv = document.querySelector(`#day${i}`).querySelector(".location");
     locationDiv.innerHTML = location;
-    console.log(locationDiv);
+    // console.log(locationDiv);
 
     let date = forecast.forecastday[index].date;
     let dateDiv = document.querySelector(`#day${i}`).querySelector(".date");
@@ -88,7 +75,7 @@ async function display(){
     monthDiv.innerHTML = dateFormatted.month;
     let yearDiv = document.querySelector(`#day${i}`).querySelector(".date").querySelector(".year");
     yearDiv.innerHTML = dateFormatted.year;
-    console.log(dateDiv);
+    // console.log(dateDiv);
 
     
     let condition = forecast.forecastday[index].day.condition.text;
@@ -97,8 +84,8 @@ async function display(){
 
     let conditionIcon = forecast.forecastday[index].day.condition.icon;
     let conditionIconDiv = conditionDiv.appendChild(document.createElement("img"));
-    console.log(conditionIcon);
-    console.log(conditionIconDiv);
+    // console.log(conditionIcon);
+    // console.log(conditionIconDiv);
     conditionIconDiv.src = conditionIcon;
 
     let maxtemp_c = forecast.forecastday[index].day.maxtemp_c;
@@ -131,4 +118,3 @@ function formatDate(date){
 }
 
 main();
-display();
