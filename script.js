@@ -1,9 +1,12 @@
 //API key 522b8e29714a4227bbe50305231104
 
-async function getWeatherForecast(place){
-  //const locationCity = prompt("Give me a capital city");
-  let searchbar = document.querySelector('#searchbar');
+const searchButton = document.querySelector(`#search`);
+searchButton.addEventListener("click", search.bind(null, searchButton))
 
+const searchBar = document.querySelector(`#searchbar`);
+searchBar.addEventListener("keydown", handleKeyPress);
+
+async function getWeatherForecast(place){
   let locationCity = place;
   console.log("------------");
     
@@ -44,13 +47,27 @@ function processForecastJSON(jsonData){
   // console.log(jsonData.forecast.forecastday[2])
   console.log("Here is the processsed jasdon");
   console.log(processed);
+  display(processed);
   return processed;
 }
 
 async function main(){
   let initialWeather = await getWeatherForecastInitial();
-  let initialWeatherProcessed = processForecastJSON(initialWeather);
-  display(initialWeatherProcessed);
+  processForecastJSON(initialWeather);
+
+  
+}
+
+async function search(button){
+  let location = searchBar.value;
+  let forecast = await getWeatherForecast(location);
+  processForecastJSON(forecast);
+}
+
+function handleKeyPress(event){
+  if(event.key === "Enter"){
+    searchButton.click();
+  }
 }
 
 async function display(forecast){
