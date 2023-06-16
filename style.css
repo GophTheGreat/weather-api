@@ -95,6 +95,13 @@ html, body {
   justify-self: center;
 }
 
+#day1 .temperature{
+  font-family: Arial, Helvetica, sans-serif;
+  display: grid;
+  grid-template-rows: 50% 50%;
+  justify-self: center;
+}
+
 #day2{
   grid-column: 1;
 }
