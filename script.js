@@ -10,7 +10,7 @@ async function getWeatherForecast(place){
   let locationCity = place;
   console.log("------------");
     
-  const response = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=522b8e29714a4227bbe50305231104&q=${locationCity}&aqi=no&days=3`);
+  const response = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=522b8e29714a4227bbe50305231104&q=${locationCity}&aqi=no&days=3`);
   const jsonData = await response.json();
 
   console.log(jsonData);
