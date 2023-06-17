@@ -14,11 +14,28 @@ html, body {
   align-items: center;
   justify-content: center;
   height: 100%;
-  width: 700px;
+  width: 800px;
 }
 
 #searchbarBox{
   align-self: flex-end;
+  margin-bottom: 10px;
+}
+
+#searchbar{
+  height: 20px;
+  border-radius: 12px;
+  border: 2px solid blue;
+  background-color: rgb(190, 235, 250);
+  padding-left: 5px;
+  font-size: 18px;
+}
+
+#search{
+  height: 25px;
+  border-radius: 12px;
+  border-color: solid lightblue;
+  font-size: 18px;
 }
 
 #weatherBox {
@@ -36,30 +53,37 @@ html, body {
 }
 
 .day{
-  background-color:  rgb(160, 225, 240);
+  background-color:  #a7e4f1;
   display: grid;
   grid-template-rows: 25% 75%;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 49% 2% 49%;
   padding: 4px;
   margin-left: 3px;
   margin-right: 3px;
   border-radius: 12px;
 }
 
+.day .location{
+  grid-column: 1 / 2;
+}
+
+.day .date{
+  grid-column: 3 / 4;
+}
+
 #day1{
-  grid-column: 1 / span 2;
+  grid-column: 1 / 4;
 }
 
 #day1 .location{
   font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  font-size: 35px;
+  font-size: 55px;
   justify-content: flex-start;
-  padding-left: 10px;
 }
 
 #day1 .date{
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  font-size: 35px;
+  font-size: 55px;
   display: flex;
   flex-direction: row;
   gap: 5px;
@@ -79,7 +103,6 @@ html, body {
   justify-content: center;
   border-radius: 12px;
   border: 3px solid rgb(5, 195, 243);
-  margin-right: 5px;
 }
 
 #day1 .conditionIconDiv{
@@ -106,7 +129,7 @@ html, body {
   justify-self: center;
   border-radius: 12px;
   border: 3px solid rgb(5, 195, 243);
-  margin-left: 5px;
+  margin-right: 6px;
 }
 
 #day1 .degreec, #day1 .degreef{
@@ -211,9 +234,14 @@ html, body {
   border: 3px solid rgb(5, 195, 243);
 }
 
+#day2 .condition, #day3 .condition,
+#day2 .temperature, #day3 .temperature{
+  margin-top: 4px;
+}
+
 #day2 .conditionIconDiv, #day3 .conditionIconDiv{
-  height: 10px;
-  width: 10px;
+  height: 100%;
+  width: auto;
   justify-self: center;
 }
 
