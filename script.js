@@ -100,6 +100,7 @@ async function display(forecast){
     if(conditionIcon.startsWith('//')){
       conditionIcon = 'https:' + conditionIcon;
     }
+    console.log(conditionIcon);
     
     console.log(conditionDiv.hasChildNodes());
     deleteChildren(conditionDiv);
