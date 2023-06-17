@@ -97,6 +97,9 @@ async function display(forecast){
     let condition = forecast.forecastday[index].day.condition.text;
     let conditionDiv = document.querySelector(`#day${i}`).querySelector(".condition");
     let conditionIcon = forecast.forecastday[index].day.condition.icon;
+    if(conditionIcon.startsWith('//')){
+      conditionIcon = 'https:' + conditionIcon;
+    }
     
     console.log(conditionDiv.hasChildNodes());
     deleteChildren(conditionDiv);
